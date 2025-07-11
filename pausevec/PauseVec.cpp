@@ -88,6 +88,7 @@ int PauseVec::lookup(size_t index){
 
       }
     }
+    return lookup(index);
   }
 
 
