@@ -90,6 +90,7 @@ int PauseVec::lookup(size_t index){
     }
     return lookup(index);
   }
+  throw std::out_of_range("Index out of range.");
 }
 
 
