@@ -75,7 +75,7 @@ int  PauseVec::remove(size_t index){
         if(i<minRemovedInd){
             minRemovedInd = i;
         }
-        if(this->count <=cap / 4 && cap>1){
+        if(this->count() <=cap / 4 && cap>1){
           size_t newCap = cap/2;
           int* newData = new int[newCap];
           bool* newRemoved = new bool[newCap];
