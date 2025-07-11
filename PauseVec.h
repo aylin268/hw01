@@ -27,3 +27,7 @@ public:
   void   append(int value);
 };
 
+PauseVec* create_pausevec();
+
+#endif
+
