@@ -57,6 +57,20 @@ int PauseVec::lookup(size_t index){
     throw std::out_of_range("Index out of range.");
   }
 
+  size_t count = 0;
+
+  for(size_t i =0; I<numLeft; i++){
+    if(!removed[i]){
+      if(count==index){
+        return data[I];
+      }
+      count++;
+    }
+  }
+  
+    
+    
+
 
   //shift elements 
   if (index> minRemovedInd){
