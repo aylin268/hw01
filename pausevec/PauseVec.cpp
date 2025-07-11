@@ -57,17 +57,17 @@ int PauseVec::lookup(size_t index){
     throw std::out_of_range("Index out of range.");
   }
 
-  size_t count = 0;
+ // size_t count = 0;
 
-  for(size_t i =0; i<numLeft; i++){
-    if(!removed[i]){
-      if(count==index){
-        return data[i];
-      }
-      count++;
-    }
-  }
-  
+  //for(size_t i =0; i<numLeft; i++){
+    //if(!removed[i]){
+      //if(count==index){
+        //return data[i];
+      //}
+      //count++;
+    //}
+  //} //*
+  return data[index];
     
     
 
