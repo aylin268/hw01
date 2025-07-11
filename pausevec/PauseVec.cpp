@@ -141,6 +141,7 @@ int  PauseVec::remove(size_t index){
 
   return value;
 }
+}
 
 
 
