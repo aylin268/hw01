@@ -89,7 +89,7 @@ int PauseVec::lookup(size_t index){
       }
     }
   }
-}
+
 
 //remove vale at index inputed
 int  PauseVec::remove(size_t index){
