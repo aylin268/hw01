@@ -90,6 +90,7 @@ int PauseVec::lookup(size_t index){
     }
     return lookup(index);
   }
+}
 
 
 //remove vale at index inputed
@@ -141,7 +142,7 @@ int  PauseVec::remove(size_t index){
 
   return value;
 }
-}
+
 
 
 
