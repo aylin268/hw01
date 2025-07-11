@@ -81,17 +81,14 @@ int  PauseVec::remove(size_t index){
           bool* newRemoved = new bool[newCap];
 
           size_t j =0;
-          for (size_t i =0; i<numLeft; i++){
-            if(!removed[i]){
-              newData[j]=data[i];
+          for (size_t p =0; p<numLeft; p++){
+            if(!removed[p]){
+              newData[j]=data[p];
               newRemoved[j] = false;
               j++;
             }
           }
-          for (size_t k = j; k < newCap; k++) {
-            newRemoved[k] = false;
-          }
-
+          
     
           delete[] data;
           delete [] removed;
@@ -99,7 +96,7 @@ int  PauseVec::remove(size_t index){
           removed = newRemoved;
           cap = newCap;
           numLeft = j;
-          minRemovedInd = 0;
+    
         }
 
 
@@ -131,16 +128,14 @@ void	 PauseVec::remove_val(int x){
           bool* newRemoved = new bool[newCap];
 
           size_t j =0;
-          for (size_t i =0; i<numLeft; i++){
-            if(!removed[i]){
-              newData[j]=data[i];
+          for (size_t p =0; p<numLeft; p++){
+            if(!removed[p]){
+              newData[j]=data[p];
               newRemoved[j] = false;
               j++;
             }
           }
-          for (size_t k = j; k < newCap; k++) {
-            newRemoved[k] = false;
-          }
+          
 
     
           delete[] data;
@@ -149,9 +144,8 @@ void	 PauseVec::remove_val(int x){
           removed = newRemoved;
           cap = newCap;
           numLeft = j;
-          minRemovedInd = 0;
         }
-      return;
+        return;
 
     }
   }   
