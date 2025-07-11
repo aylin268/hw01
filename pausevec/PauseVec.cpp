@@ -98,7 +98,7 @@ int  PauseVec::remove(size_t index){
           data = newData;
           removed = newRemoved;
           cap = newCap;
-          numLeft = newCap;
+          numLeft = j;
           minRemovedInd = 0;
         }
 
