@@ -48,105 +48,67 @@ size_t PauseVec::count() const{
 
 //is the index in the array?? check to see
 int PauseVec::lookup(size_t index){
-//index greater than the emount of elemnts in the array 
-  if(index>= numLeft){
-    throw std::out_of_range("Index out of range.");
-  }
-//if removed
-  if(removed[index]){
-    throw std::out_of_range("Index out of range.");
-  }
+  size_t count = 0;
 
- // size_t count = 0;
-
-  //for(size_t i =0; i<numLeft; i++){
-    //if(!removed[i]){
-      //if(count==index){
-        //return data[i];
-      //}
-      //count++;
-    //}
-  //} //*
-  return data[index];
-    
-    
-
-
-  //shift elements 
-  if (index> minRemovedInd){
-    for (size_t i = minRemovedInd; i<= index; i++){
-      if (removed[i]){
-        for(size_t j=i; j<numLeft -1; j++){
-          data[j] = data[j+1];
-          removed[j] = removed [j+1];
-        }
-        numLeft--;
-        while (minRemovedInd < numLeft && !removed[minRemovedInd]) {
-          minRemovedInd++;
-        }
-        i--;
-
+  for(size_t i =0; i<numLeft; i++){
+    if(!removed[i]){
+      if(count==index){
+        return data[i];
       }
+      count++;
     }
-    return lookup(index);
-  }
+  } 
+      
   throw std::out_of_range("Index out of range.");
 }
 
 
 //remove vale at index inputed
 int  PauseVec::remove(size_t index){
+  size_t count =0;
+  for(size_t i =0; i<numLeft; i++){
+    if(!removed[i]){
+      if(count==index){
+        int value = data[i];
+        removed[i] = true;
+      
+        if(i<minRemovedInd){
+            minRemovedInd = i;
+        }
+        if(count() <=cap / 4 && cap>1){
+          size_t newCap = cap/2;
+          int* newData = new int[newCap];
+          bool* newRemoved = new bool[newCap];
 
-  //in range?
-  if(index>= numLeft){
-    throw std::out_of_range("Index out of range.");
-  }
-
-  if(removed[index]){
-    throw std::out_of_range("Index out of range.");
-  }
-
-
-  int value = data[index];
-  removed[index]=true;
-  if (index<minRemovedInd){
-    minRemovedInd = index;
-
-  }
-
-
-  
-
-
-  if(count() <=cap / 4 && cap>1){
-    size_t newCap = cap/2;
-    int* newData = new int[newCap];
-    bool* newRemoved = new bool[newCap];
-
-    size_t j =0;
-    for (size_t i =0; i<numLeft; i++){
-      if(!removed[i]){
-        newData[j]=data[i];
-        newRemoved[j] = false;
-        j++;
-      }
-    }
-    for (size_t k = j; k < newCap; k++) {
-      newRemoved[k] = false;
-    }
+          size_t j =0;
+          for (size_t i =0; i<numLeft; i++){
+            if(!removed[i]){
+              newData[j]=data[i];
+              newRemoved[j] = false;
+              j++;
+            }
+          }
+          for (size_t k = j; k < newCap; k++) {
+            newRemoved[k] = false;
+          }
 
     
-    delete[] data;
-    delete [] removed;
-    data = newData;
-    removed = newRemoved;
-    cap = newCap;
-    numLeft = newCap;
-    minRemovedInd = 0;
+          delete[] data;
+          delete [] removed;
+          data = newData;
+          removed = newRemoved;
+          cap = newCap;
+          numLeft = newCap;
+          minRemovedInd = 0;
+        }
+
+
+        return value;
+      }
+      count++;
+    }
   }
-
-
-  return value;
+  throw std::out_of_range("Index out of range.");
 }
 
 
@@ -155,13 +117,18 @@ int  PauseVec::remove(size_t index){
 
 
 void	 PauseVec::remove_val(int x){
+  size_t = count = 0;
+  
   for(size_t i=0; i <numLeft; i++){
-    if(!removed[i] && data[i] == x){
-      remove(i);
-      return;
-    }
+    if(!removed[i]){
+      if(data[i] == x){
+        remove(count);
+        return;
+       }
+      count++;
     
-  }
+      }
+    } 
 
 
 }
