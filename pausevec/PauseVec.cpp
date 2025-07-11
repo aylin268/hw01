@@ -118,7 +118,7 @@ int  PauseVec::remove(size_t index){
   
 
 
-  if(count() <=cap / 4 ){
+  if(count() <=cap / 4 && cap>1){
     size_t newCap = cap/2;
     int* newData = new int[newCap];
     bool* newRemoved = new bool[newCap];
@@ -131,12 +131,17 @@ int  PauseVec::remove(size_t index){
         j++;
       }
     }
+    for (size_t k = j; k < newCap; k++) {
+      newRemoved[k] = false;
+    }
+
+    
     delete[] data;
     delete [] removed;
     data = newData;
     removed = newRemoved;
     cap = newCap;
-    numLeft = j;
+    numLeft = newCap;
     minRemovedInd = 0;
   }
 
