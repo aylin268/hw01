@@ -35,7 +35,7 @@ size_t PauseVec::capacity() const{
 size_t PauseVec::count() const{
   size_t count = 0;
 
-  for(int i = 0; i<numLeft; i++){
+  for(size_t i = 0; i<numLeft; i++){
     if(!removed[i]){
       count++;
     }
@@ -98,7 +98,6 @@ int  PauseVec::remove(size_t index){
 
   }
 
-  bool* newRemoved = new bool[newCap];
 
   
 
