@@ -62,7 +62,7 @@ int PauseVec::lookup(size_t index){
   for(size_t i =0; i<numLeft; i++){
     if(!removed[i]){
       if(count==index){
-        return data[I];
+        return data[i];
       }
       count++;
     }
